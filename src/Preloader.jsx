@@ -1,3 +1,5 @@
+import { InfinitySpin } from "react-loader-spinner";
+
 function Preloader() {
   return (
     <div
@@ -7,9 +9,15 @@ function Preloader() {
         justifyContent: "center",
         alignItems: "center",
         background: "white",
+        transition: "all 200ms ease-in-out",
       }}
     >
-      Preloader
+      <InfinitySpin
+        visible={true}
+        width="200"
+        color="#4fa94d"
+        ariaLabel="infinity-spin-loading"
+      />
     </div>
   );
 }

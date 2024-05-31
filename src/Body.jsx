@@ -14,23 +14,30 @@ function Body() {
 
   useEffect(() => {
     ScrollReveal().reveal(".left-content", {
-      delay: 250,
+      // delay: 25,
       origin: "left",
       distance: "150px",
       duration: 1000,
       reset: true,
     });
     ScrollReveal().reveal(".right-content", {
-      delay: 400,
+      // delay: 40,
       origin: "right",
       distance: "150px",
       duration: 1000,
       reset: true,
     });
     ScrollReveal().reveal('.header', {
-      delay: 100,
+      // delay: 10,
       duration: 800,
       scale: '0.05',
+    });
+    ScrollReveal().reveal('.about-header', {
+      delay: 250,
+      duration: 1000,
+      origin: 'bottom',
+      distance: '150px',
+      reset: true,
     })
   })
 
@@ -76,7 +83,7 @@ function Body() {
             </div>
           </div>
           <div className="about scroll-content">
-            <h1>ABOUT ME</h1>
+            <h1 className="about-header">ABOUT ME</h1>
           </div>
         </div>
       )}

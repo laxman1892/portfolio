@@ -1,16 +1,15 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 import Projects from './Projects.jsx'
 import Contact from './Contact.jsx'
-import Preloader from './Preloader.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Suspense fallback={<Preloader />}> <App /> </Suspense>,
+    element: <App />,
     children: [
       {
         path: 'projects',

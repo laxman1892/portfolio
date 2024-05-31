@@ -7,12 +7,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    window.addEventListener("DOMContentLoaded", () => {
+    // Simulate a data fetching operation
+    setTimeout(() => {
       setIsLoading(false);
-    });
-  }, []); // Empty dependency array ensures this runs once on mount
+    }, 2000);
+  }, []);
 
-  return <><Body /></>;
+  return (
+  <>
+  {isLoading ? <Preloader /> : <Body />}
+  </>)
+  ;
 }
 
 export default App;
