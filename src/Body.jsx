@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import image from '../public/body-content.svg'
 import ScrollReveal from "scrollreveal";
 
 function Body() {
@@ -71,7 +72,7 @@ function Body() {
               </p>
             </div>
             <div className="right-content">
-              <img src="../public/body-content.svg" />
+              <img src={image} />
             </div>
           </div>
           <div className="about scroll-content">
