@@ -22,7 +22,7 @@ function Contact() {
   return (
     <>
       <div className="body-content contact-flex">
-        <Fade delay={250} direction="left" className="blah">
+        <Fade delay={250} direction="left" className="blah" triggerOnce>
         <div className="contact">
           
           <h1>Let&apos;s work together.</h1>
@@ -35,7 +35,7 @@ function Contact() {
           
         </div></Fade>
         <div className="form">
-          <Fade delay={500} direction="right">
+          <Fade delay={500} direction="right" triggerOnce>
           <form method="post">
             <label htmlFor="name">Your Name</label>
             <span>*</span> <br />

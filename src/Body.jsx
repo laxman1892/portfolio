@@ -10,6 +10,9 @@ function Body() {
   const [home, setHome] = useState(location.pathname === "/");
   const date = new Date().getFullYear();
 
+  const screenWidth = document.documentElement.clientWidth
+  console.log(screenWidth)
+
   function handleLinkClick() {
     setHome(false);
   }
@@ -47,7 +50,7 @@ function Body() {
     <>
       <div className="header">
         <div className="glassmorph-header">
-          <Fade direction="up" delay={100} duration={400} triggerOnce>
+          <Fade direction="up" delay={100} duration={1000} triggerOnce>
         <div className="menu-bar">
           <div>
             <NavLink
@@ -76,7 +79,7 @@ function Body() {
       {home && (
         <div className="body-content container">
           <div className="content scroll-content">
-            <Fade direction="left" delay={200}>
+            <Fade direction={`${screenWidth <= 576 ? "up" : "left" }`} delay={200}>
             <div className="left-content">
               <p>HI, MY NAME IS</p>
               <h1>LAXMAN RIJAL.</h1>
