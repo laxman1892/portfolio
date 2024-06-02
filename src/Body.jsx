@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import image from '../public/body-content.svg'
-import ScrollReveal from "scrollreveal";
+// import ScrollReveal from "scrollreveal";
+import { Fade } from "react-awesome-reveal";
 
 function Body() {
   const location = useLocation();
@@ -12,39 +13,41 @@ function Body() {
     setHome(false);
   }
 
-  useEffect(() => {
-    ScrollReveal().reveal(".left-content", {
-      // delay: 25,
-      origin: "left",
-      distance: "150px",
-      duration: 1000,
-      reset: true,
-    });
-    ScrollReveal().reveal(".right-content", {
-      // delay: 40,
-      origin: "right",
-      distance: "150px",
-      duration: 1000,
-      reset: true,
-    });
-    ScrollReveal().reveal('.header', {
-      // delay: 10,
-      duration: 800,
-      scale: '0.05',
-    });
-    ScrollReveal().reveal('.about-header', {
-      delay: 250,
-      duration: 1000,
-      origin: 'bottom',
-      distance: '150px',
-      reset: true,
-    })
-  })
+  // useEffect(() => {
+  //   ScrollReveal().reveal(".left-content", {
+  //     // delay: 25,
+  //     origin: "left",
+  //     distance: "150px",
+  //     duration: 1000,
+  //     reset: true,
+  //   });
+  //   ScrollReveal().reveal(".right-content", {
+  //     // delay: 40,
+  //     origin: "right",
+  //     distance: "150px",
+  //     duration: 1000,
+  //     reset: true,
+  //   });
+  //   ScrollReveal().reveal('.header', {
+  //     // delay: 10,
+  //     duration: 800,
+  //     scale: '0.05',
+  //   });
+  //   ScrollReveal().reveal('.about-header', {
+  //     delay: 250,
+  //     duration: 1000,
+  //     origin: 'bottom',
+  //     distance: '150px',
+  //     reset: true,
+  //   })
+  // })
 
   return (
     <>
       <div className="header">
-        <div className="glassmorph-header menu-bar">
+        <div className="glassmorph-header">
+          <Fade direction="up" delay={100} triggerOnce>
+        <div className="menu-bar">
           <div>
             <NavLink
               className="menu"
@@ -65,10 +68,14 @@ function Body() {
             </NavLink>
           </div>
         </div>
+        </Fade>
+        </div>
+        
       </div>
       {home && (
         <div className="body-content container">
           <div className="content scroll-content">
+            <Fade direction="left" delay={200}>
             <div className="left-content">
               <p>HI, MY NAME IS</p>
               <h1>LAXMAN RIJAL.</h1>
@@ -78,12 +85,17 @@ function Body() {
                 building beautiful web experiences.
               </p>
             </div>
+            </Fade>
+            <Fade direction="right" delay={500}>
             <div className="right-content">
               <img src={image} />
             </div>
+            </Fade>
           </div>
           <div className="about scroll-content">
+            <Fade direction="up" delay={200}>
             <h1 className="about-header">ABOUT ME</h1>
+            </Fade>
           </div>
         </div>
       )}

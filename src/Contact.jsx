@@ -1,27 +1,29 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "./App.css";
 import "./Contact.css";
-import ScrollReveal from "scrollreveal";
+// import ScrollReveal from "scrollreveal";
+import { Fade } from "react-awesome-reveal";
 
 function Contact() {
-  useEffect(() => {
-    ScrollReveal().reveal(".contact", {
-      delay: 250,
-      origin: "left",
-      distance: "150px",
-      duration: 1000,
-    });
-    ScrollReveal().reveal(".form", {
-      delay: 500,
-      origin: "right",
-      distance: "150px",
-    });
-  }, []);
+  // useEffect(() => {
+  //   ScrollReveal().reveal(".contact", {
+  //     delay: 250,
+  //     origin: "left",
+  //     distance: "150px",
+  //     duration: 1000,
+  //   });
+  //   ScrollReveal().reveal(".form", {
+  //     delay: 500,
+  //     origin: "right",
+  //     distance: "150px",
+  //   });
+  // }, []);
 
   return (
     <>
       <div className="body-content contact-flex">
         <div className="contact">
+          <Fade delay={250} direction="left">
           <h1>Let&apos;s work together.</h1>
           <h1>Get in touch.</h1>
           <p>
@@ -29,8 +31,10 @@ function Contact() {
             question or just want to say hi, my inbox is always open. I do my
             best to respond within 1-2 working days.
           </p>
+          </Fade>
         </div>
         <div className="form">
+          <Fade delay={500} direction="right">
           <form method="post">
             <label htmlFor="name">Your Name</label>
             <span>*</span> <br />
@@ -60,6 +64,7 @@ function Contact() {
             <br />
             <button type="submit">Submit</button>
           </form>
+          </Fade>
         </div>
       </div>
     </>
