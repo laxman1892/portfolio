@@ -22,8 +22,9 @@ function Contact() {
   return (
     <>
       <div className="body-content contact-flex">
+        <Fade delay={250} direction="left" className="blah">
         <div className="contact">
-          <Fade delay={250} direction="left">
+          
           <h1>Let&apos;s work together.</h1>
           <h1>Get in touch.</h1>
           <p>
@@ -31,8 +32,8 @@ function Contact() {
             question or just want to say hi, my inbox is always open. I do my
             best to respond within 1-2 working days.
           </p>
-          </Fade>
-        </div>
+          
+        </div></Fade>
         <div className="form">
           <Fade delay={500} direction="right">
           <form method="post">
