@@ -1,5 +1,9 @@
-.contact {
+/* .contact {
     width: 45%;
+} */
+
+.blah {
+  width: 45%;
 }
 
 .contact h1 {
@@ -7,7 +11,7 @@
 }
 
 .contact h1:nth-child(2) {
-    color: rgba(125, 125, 125, 0.5);
+    color: rgba(22, 14, 14, 0.5);
 }
 
 .contact-flex {
