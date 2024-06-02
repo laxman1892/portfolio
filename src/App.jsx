@@ -5,12 +5,14 @@ import Body from "./Body";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-
+  
   useEffect(() => {
     // Simulate a data fetching operation
+    const delayVariable = Math.floor((Math.random()*2000)+1200);
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, delayVariable );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
