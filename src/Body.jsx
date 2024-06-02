@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import image from '../public/body-content.svg'
+import image from '../public/body-content.svg';
+import arrow from '../public/down-arrow.svg';
 // import ScrollReveal from "scrollreveal";
 import { Fade } from "react-awesome-reveal";
 
@@ -46,7 +47,7 @@ function Body() {
     <>
       <div className="header">
         <div className="glassmorph-header">
-          <Fade direction="up" delay={100} triggerOnce>
+          <Fade direction="up" delay={100} duration={400} triggerOnce>
         <div className="menu-bar">
           <div>
             <NavLink
@@ -86,16 +87,24 @@ function Body() {
               </p>
             </div>
             </Fade>
-            <Fade direction="right" delay={500}>
+            <Fade direction="right" delay={600}>
             <div className="right-content">
-              <img src={image} />
+              <img src={image} draggable="false" />
             </div>
             </Fade>
-          </div>
-          <div className="about scroll-content">
-            <Fade direction="up" delay={200}>
-            <h1 className="about-header">ABOUT ME</h1>
+            <div className="scroll-image">
+            <Fade delay={1000} direction="up" duration={700}>
+              <img src={arrow} draggable="false" />
             </Fade>
+          </div>
+          </div>
+          
+          <div className="about scroll-content">
+            <h1 className="about-header">
+            <Fade cascade delay={200} damping={0.1} >
+            ABOUT ME
+            </Fade>
+            </h1>
           </div>
         </div>
       )}
