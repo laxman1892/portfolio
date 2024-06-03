@@ -104,10 +104,42 @@ function Body() {
           
           <div className="about scroll-content">
             <h1 className="about-header">
-            <Fade cascade delay={200} damping={0.1} >
+            <Fade cascade delay={200} damping={0.05} >
             ABOUT ME
             </Fade>
             </h1>
+              <div className="about-content">
+                  <div className="about-left">
+                  <Fade cascade damping={0.5} direction="left" delay={500}>
+                    <h2>Get to know me!</h2>
+                    <p>
+                    I am a recent graduate in Bachelor in Electronics, Communication and Information Technology Engineering. With a profound interest in web development, I am able to create dynamic, responsive and interactive web applications.
+                    </p>
+                    <p>
+                    I have developed a strong foundation in full-stack development, particularly emphasizing front-end technologies. My passion for web development is driven by the desire to build innovative solutions that enhance user experiences and meet real-world challenges.
+                  </p>
+                  <p>
+                    As a recent graduate, I&apos;m actively seeking opportunities where I can apply my skills to real-world projects, contribute to innovative teams, and continue learning in a fast-paced environment. I&apos;m always eager to expand my skill set and explore new technologies that align with my professional growth as I also possess basic knowlegde in Python.
+                  </p>
+                  </Fade>
+                  </div>
+                  <div className="about-right">
+                  <Fade cascade damping={0.5} direction="right" delay={1000}>
+                    <h2>Skills</h2>
+                    <div className="skills-content">
+                      <p>HTML</p>
+                      <p>CSS</p>
+                      <p>Javascript</p>
+                      <p>React</p>
+                      <p>Node</p>
+                      <p>Express</p>
+                      <p>Mongo</p>
+                      <p>Github</p>
+                      <p>Responsive Design</p>
+                    </div>
+                    </Fade>
+                  </div>
+              </div>
           </div>
         </div>
       )}
