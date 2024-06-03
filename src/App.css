@@ -121,13 +121,44 @@
   width: 20px;
 }
 
-.about {
-  height: 100vh;
-}
-
 .about h1 {
   margin-top: 100px;
   text-align: center;
+}
+
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0;
+  line-height: 1.8;
+}
+
+.about-left {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  gap: 10px;
+}
+
+.about-right {
+  width: 35vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skills-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-content p {
+  background-color: rgba(232, 229, 228 , 0.5);
+  padding: 10px 20px;
+  border-radius: 4px;
+  user-select: none;
 }
 
 .footer {
@@ -220,12 +251,26 @@
     left: 48%;
   }
 
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-left {
+    width: 100%;
+  }
+
+  .about-right {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    gap: 20px;
+  }
+
   .footer {
     flex-direction: column;
-    align-items: start;
     gap: 10px;
     text-align: center;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
   }
 
   .right-footer {
