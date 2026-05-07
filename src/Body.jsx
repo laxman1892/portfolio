@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 import { Code2, ExternalLink, FileDown, Mail, Moon, Sun } from "lucide-react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const navLinkClass = ({ isActive }) =>
   [
-    "flex h-10 items-center rounded-full px-4 text-sm no-underline transition-colors duration-300 sm:px-7",
-    "text-black hover:bg-white dark:text-white dark:hover:bg-white/10",
-    isActive ? "bg-white dark:bg-white/10" : "",
+    "relative pb-1 text-sm font-bold no-underline transition-colors duration-300",
+    "after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300",
+    "hover:after:w-full",
+    "text-black hover:text-black dark:text-white dark:hover:text-white",
+    isActive ? "text-black after:w-full dark:text-white" : "",
   ]
     .filter(Boolean)
     .join(" ");
 
 function Body() {
   const date = new Date().getFullYear();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const [theme, setTheme] = useState(() => {
     if (typeof window === "undefined") {
       return "light";
@@ -32,29 +36,44 @@ function Body() {
 
   return (
     <div className="flex min-h-screen flex-col bg-white text-black transition-colors duration-300 dark:bg-neutral-950 dark:text-white">
-      <header className="fixed left-0 right-0 top-7 z-50 flex justify-center text-sm">
-        <div className="flex items-center gap-2">
-          <nav className="rounded-full bg-[#e8e5e480] p-1 backdrop-blur-md dark:bg-white/10">
-            <div className="flex items-center justify-center gap-1">
+      <header className="fixed left-0 right-0 top-0 z-50 bg-white/95 dark:bg-neutral-950/95">
+        <div className="mx-6 flex h-20 items-center justify-between sm:mx-16 lg:mx-24">
+          <NavLink
+            className="text-base font-black text-black no-underline dark:text-white"
+            to="/"
+          >
+            Laxman Rijal
+          </NavLink>
+
+          <nav className="hidden sm:block">
+            <div className="flex items-center justify-center gap-12">
               <NavLink className={navLinkClass} to="/">
                 Home
               </NavLink>
               <NavLink className={navLinkClass} to="/projects">
                 Projects
               </NavLink>
+              <NavLink className={navLinkClass} to="/skills">
+                Skills
+              </NavLink>
               <NavLink className={navLinkClass} to="/contact">
                 Contact
               </NavLink>
             </div>
           </nav>
-          <button
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#e8e5e480] text-black backdrop-blur-md transition-colors hover:bg-white dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
-            onClick={toggleTheme}
-            type="button"
-          >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+
+          <div className="flex items-center gap-4">
+            <button
+              aria-label={`Switch to ${
+                theme === "dark" ? "light" : "dark"
+              } mode`}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f7f7f5] text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white dark:bg-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
+              onClick={toggleTheme}
+              type="button"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -62,45 +81,47 @@ function Body() {
         <Outlet />
       </main>
 
-      <footer className="mx-5 border-t border-black/10 py-8 dark:border-white/10 sm:mx-[100px]">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-black/50 dark:text-white/50">
-            &copy; {date} Laxman Rijal. All rights reserved.
-          </p>
+      {!isHomePage && (
+        <footer className="mx-6 border-t border-black/10 py-10 dark:border-white/10 sm:mx-16 lg:mx-24">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-black/50 dark:text-white/50">
+              &copy; {date} Laxman Rijal. All rights reserved.
+            </p>
 
-          <div className="flex flex-wrap gap-2">
-            <a
-              className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
-              href="mailto:laxman.rijal1892@gmail.com"
-            >
-              <Mail size={17} />
-              Email
-            </a>
-            <a
-              className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
-              href="https://www.linkedin.com/in/laxman-rijal"
-            >
-              <ExternalLink size={17} />
-              LinkedIn
-            </a>
-            <a
-              className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
-              href="https://www.github.com/laxman1892"
-            >
-              <Code2 size={17} />
-              GitHub
-            </a>
-            <a
-              className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
-              href="/LR-CV.pdf"
-              download="Laxman-Rijal-CV.pdf"
-            >
-              <FileDown size={17} />
-              CV
-            </a>
+            <div className="flex flex-wrap gap-2">
+              <a
+                className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
+                href="mailto:laxman.rijal1892@gmail.com"
+              >
+                <Mail size={17} />
+                Email
+              </a>
+              <a
+                className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
+                href="https://www.linkedin.com/in/laxman-rijal"
+              >
+                <ExternalLink size={17} />
+                LinkedIn
+              </a>
+              <a
+                className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
+                href="https://www.github.com/laxman1892"
+              >
+                <Code2 size={17} />
+                GitHub
+              </a>
+              <a
+                className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
+                href="/LR-CV.pdf"
+                download="Laxman-Rijal-CV.pdf"
+              >
+                <FileDown size={17} />
+                CV
+              </a>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
   );
 }

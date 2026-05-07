@@ -6,6 +6,7 @@ import './index.css'
 import Home from './Home.jsx'
 import Projects from './Projects.jsx'
 import Contact from './Contact.jsx'
+import Skills from './Skills.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: 'projects',
         element: <Projects />,
+      },
+      {
+        path: 'skills',
+        element: <Skills />,
       },
       {
         path: 'contact',

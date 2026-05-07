@@ -1,9 +1,9 @@
-import { ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowUpRight, Code2, Globe } from "lucide-react";
 import { projects } from "./data/projects";
 
 function Projects() {
   return (
-    <div className="mx-5 min-h-screen pt-32 sm:mx-[100px]">
+    <div className="motion-fade-up mx-auto min-h-screen max-w-6xl px-6 pt-36 sm:px-10">
       <section className="max-w-4xl">
         <p className="text-sm font-bold uppercase tracking-[0.28em] text-black/45 dark:text-white/45">
           Selected projects
@@ -18,10 +18,10 @@ function Projects() {
         </p>
       </section>
 
-      <section className="mt-14 grid gap-5 pb-20">
+      <section className="mt-16 grid gap-8 pb-28">
         {projects.map((project, index) => (
           <article
-            className="grid gap-8 rounded-lg border border-black/10 bg-white p-6 transition-colors hover:bg-[#f7f7f5] dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:grid-cols-[0.35fr_0.65fr] sm:p-8"
+            className="grid gap-8 rounded-lg border border-black/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-[#f7f7f5] dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:grid-cols-[0.35fr_0.65fr] sm:p-8"
             key={project.title}
           >
             <div>
@@ -63,18 +63,32 @@ function Projects() {
                 </ul>
               </div>
 
-              {project.repositoryUrl && (
+              {(project.repositoryUrl || project.liveUrl) && (
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-colors hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
-                    href={project.repositoryUrl}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <Code2 size={16} />
-                    View repository
-                    <ArrowUpRight size={16} />
-                  </a>
+                  {project.repositoryUrl && (
+                    <a
+                      className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
+                      href={project.repositoryUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <Code2 size={16} />
+                      View repository
+                      <ArrowUpRight size={16} />
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      className="inline-flex items-center gap-2 rounded border border-black/10 px-4 py-2.5 text-sm font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white dark:border-white/10 dark:text-white dark:hover:bg-white dark:hover:text-black"
+                      href={project.liveUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <Globe size={16} />
+                      View live site
+                      <ArrowUpRight size={16} />
+                    </a>
+                  )}
                 </div>
               )}
             </div>
@@ -82,7 +96,7 @@ function Projects() {
         ))}
       </section>
     </div>
-  )
+  );
 }
 
 export default Projects
